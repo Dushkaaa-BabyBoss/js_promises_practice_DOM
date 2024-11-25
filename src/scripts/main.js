@@ -5,25 +5,25 @@ document.addEventListener('contextmenu', (e) => {
 });
 
 function notification(message, isError = false) {
-  const createNotfication = document.createElement('div');
+  const createNotification = document.createElement('div');
 
   if (!isError) {
-    createNotfication.classList.add('success');
+    createNotification.classList.add('success');
   } else {
-    createNotfication.classList.add('error');
+    createNotification.classList.add('error');
   }
 
-  createNotfication.setAttribute('data-qa', 'notification');
-  createNotfication.textContent = message;
+  createNotification.setAttribute('data-qa', 'notification');
+  createNotification.textContent = message;
 
-  document.body.appendChild(createNotfication);
+  document.body.appendChild(createNotification);
 }
 
 // Перший проміс
 
 const firstPromise = new Promise((resolve, reject) => {
   const timeOut = setTimeout(() => {
-    resolve('First promise was rejected');
+    resolve('First promise was resolved after timeout');
   }, 3000);
 
   document.addEventListener('click', () => {
@@ -45,8 +45,8 @@ const secondPromise = new Promise((resolve, reject) => {
 // Третій проміс
 
 const thirdPromise = new Promise((resolve, reject) => {
-  let leftClicked = false; // Відслідковує праву кнопку
-  let rightClicked = false; // Відслідковує ліву кнопку
+  let leftClicked = false; // Відслідковує ліву кнопку
+  let rightClicked = false; // Відслідковує праву кнопку
 
   document.addEventListener('mousedown', (e) => {
     if (e.button === 0) {
