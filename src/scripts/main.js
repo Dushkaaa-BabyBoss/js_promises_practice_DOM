@@ -23,7 +23,7 @@ function notification(message, isError = false) {
 
 const firstPromise = new Promise((resolve, reject) => {
   const timeOut = setTimeout(() => {
-    resolve('First promise was resolved after timeout');
+    reject(new Error('First promise was resolved after timeout'));
   }, 3000);
 
   document.addEventListener('click', () => {
@@ -63,7 +63,9 @@ const thirdPromise = new Promise((resolve, reject) => {
   });
 });
 
-firstPromise.then((message) => notification(message));
+firstPromise
+  .then((message) => notification(message))
+  .catch((error) => notification(error, true));
 
 secondPromise.then((message) => notification(message));
 
